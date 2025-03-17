@@ -11,6 +11,6 @@ try {
   console.error(e);
 }
 
-let db = conn.db("hos08");
+let db = conn.db("blog");
 
 export default db;
