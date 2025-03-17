@@ -2,10 +2,34 @@
   --main-color: #d2d3d6;
   --secondary-color: #263a94;
   --button-color: lightcoral;
+
+  --major-font: 'Arial'; 
+}
+
+@font-face {
+  font-family: 'times';
+  src: url('./fonts/times.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 120%;
+}
+
+@font-face {
+  font-family: 'calibri';
+  src: url('./fonts/calibri.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'arial';
+  src: url('./fonts/arial.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--major-font), sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--main-color);
@@ -31,6 +55,7 @@ body {
 }
 
 .navbar li {
+  font-family: var(--major-font), sans-serif;
   display: inline-block;
   margin-right: 15px;
 }
@@ -40,6 +65,7 @@ body {
 }
 
 .navbar a {
+  font-family: var(--major-font), sans-serif;
   color: white;
   text-decoration: none;
   padding: 5px 10px;
@@ -50,6 +76,7 @@ body {
 }
 
 .content {
+  font-family: var(--major-font), sans-serif;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 15px;
@@ -65,6 +92,7 @@ body {
 }
 
 .addPostButton {
+  font-family: var(--major-font), sans-serif;
   background-color: lightcoral;
   color: white;
   padding: 10px 20px;
@@ -74,6 +102,7 @@ body {
 }
 
 .confirmEditButton {
+  font-family: var(--major-font), sans-serif;
   background-color: lightcoral;
   color: white;
   padding: 10px 20px;
@@ -84,6 +113,7 @@ body {
 }
 
 .cancelEditButton {
+  font-family: var(--major-font), sans-serif;
   background-color: rgb(135, 181, 202);
   color: white;
   padding: 10px 20px;
@@ -94,6 +124,7 @@ body {
 }
 
 .postTitleInput {
+  font-family: var(--major-font), sans-serif;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 10px;
@@ -103,6 +134,7 @@ body {
 }
 
 .postTextInput {
+  font-family: var(--major-font), sans-serif;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 8px;
@@ -113,6 +145,7 @@ body {
 }
 
 .postCard {
+  font-family: var(--major-font), sans-serif;
   background-color: #f0f0f0;
   border: 6px outset #8c94b8;
   padding: 8px;
@@ -126,6 +159,7 @@ body {
 }
 
 .postTitle {
+  font-family: var(--major-font), sans-serif;
   background-color: #fff;
   border: 6px double #98b4b1;
   border-radius: 10px;
@@ -139,6 +173,7 @@ body {
 }
 
 .postText {
+  font-family: var(--major-font), sans-serif;
   background-color: #fff;
   border: 6px double #98b4b1;
   padding: 8px;
@@ -150,6 +185,7 @@ body {
 }
 
 .deletePostButton{
+  font-family: var(--major-font), sans-serif;
   background-color: rgb(228, 63, 63);
   padding: 5px;
   margin: 10px;
@@ -159,6 +195,7 @@ body {
 }
 
 .editPostButton{
+  font-family: var(--major-font), sans-serif;
   background-color: rgb(135, 181, 202);
   padding: 5px;
   margin: 15px;

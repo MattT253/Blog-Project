@@ -24,9 +24,8 @@ router.get("/:id", async (req, res) => {
 // This section will help you create a new post.
 router.post("/", async (req, res) => {
   let newDocument = {
-    name: req.body.name,
-    position: req.body.position,
-    level: req.body.level,
+    postTitle: req.body.postTitle,
+    postText: req.body.postText,
   };
   let collection = await db.collection("posts");
   let result = await collection.insertOne(newDocument);
@@ -38,9 +37,8 @@ router.patch("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   const updates =  {
     $set: {
-      name: req.body.name,
-      position: req.body.position,
-      level: req.body.level
+      postTitle: req.body.postTitle,
+      postText: req.body.postText,
     }
   };
 

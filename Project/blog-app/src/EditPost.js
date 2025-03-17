@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
   
-function EditPost ({ timelineValue, setTimelineValue }) {
+function EditPost ({ timelineValue }) {
 
     const { id } = useParams();
     
     const [redirectToTimeline, setRedirectToTimeline] = useState(false);
 
-    const post = timelineValue.filter((val) => val.id === id)
+    const post = timelineValue.filter((val) => val._id === id)
 
     // Stores the post title in text input
     const[inputPostTitle, setInputPostTitle] = useState(post[0].postTitle)
@@ -15,13 +15,23 @@ function EditPost ({ timelineValue, setTimelineValue }) {
     // Stores the post text content in a text input
     const[inputPostText, setInputPostText] = useState(post[0].postText)
   
-    // Transfer the text in the input field into a new post and give it a unique ID.
-    const handleUpdatePost = () => {
-      const index = timelineValue.findIndex((val) => val.id === id)
+    // Transfer the text in the input fields into the existing post.
+    async function handleUpdatePost () {
 
-      const newTimeline = [...timelineValue];
-      newTimeline[index] = { ...newTimeline[index], postText: inputPostText, postTitle: inputPostTitle };
-      setTimelineValue(newTimeline);
+      const editedPost = {
+        postTitle: inputPostTitle,
+        postText: inputPostText
+      };
+    
+      // This will send a post request to update the data in the database.
+      await fetch(`https://ideal-cod-x649qjqpx7vh6g7p-5050.app.github.dev/record/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(editedPost),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
       setRedirectToTimeline(true)
     }
 

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 
-function Post({ post, timelineValue, setTimelineValue }) {
+function Post({ post }) {
 
     // const { id } = useParams();
 
     const [redirectToEditPost, setRedirectToEditPost] = useState(false);
 
     // Remove a post from the list using a filter on the unique post ID
-    const handlePostRemove = () => {
+    async function handlePostRemove () {
       if (window.confirm('Are you sure you want to delete this post?')) {
-        setTimelineValue(timelineValue.filter((val) => val.id !== post.id))
+        await fetch(`https://ideal-cod-x649qjqpx7vh6g7p-5050.app.github.dev/record/${post._id}`, {
+          method: "DELETE"
+        });
+        window.location.reload()
       }
     }
 
@@ -19,7 +22,7 @@ function Post({ post, timelineValue, setTimelineValue }) {
       }
 
     if (redirectToEditPost) {
-      return <Navigate to={"/editPost/" + post.id} />;
+      return <Navigate to={"/editPost/" + post._id} />;
     }
   
     /* 

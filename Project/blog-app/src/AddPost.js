@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
   
-function AddPost ({ timelineValue, setTimelineValue, postCount, setPostCount }) {
+function AddPost () {
       const [redirectToTimeline, setRedirectToTimeline] = useState(false);
 
       // Stores the post title in text input
@@ -11,9 +11,21 @@ function AddPost ({ timelineValue, setTimelineValue, postCount, setPostCount }) 
       const[inputPostText, setInputPostText] = useState('')
     
       // Transfer the text in the input field into a new post and give it a unique ID.
-      const handleAddPost = () => {
-        setTimelineValue([...timelineValue, {id: String(postCount), postTitle: inputPostTitle, postText: inputPostText}])
-        setPostCount(postCount + 1)
+      async function handleAddPost () {
+        const newPost = {postTitle: inputPostTitle, postText: inputPostText}
+        
+        await fetch("https://ideal-cod-x649qjqpx7vh6g7p-5050.app.github.dev/record", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newPost),
+        })
+        .catch(error => {
+          window.alert(error);
+          return;
+        });
+
         setRedirectToTimeline(true)
       }
 
